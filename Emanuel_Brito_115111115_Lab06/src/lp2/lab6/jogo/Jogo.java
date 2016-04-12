@@ -14,7 +14,7 @@ public abstract class Jogo {
 	private int maiorPontuacao;
 	private int quantidadeVezesJogado;
 	private int quantidadeVezesZerado;
-	private List<EstiloJogo> estilosJogo;
+	private List<EstiloJogoEnum> estilosJogo;
 
 	public Jogo(String nome, double preco) throws DadosInvalidosException {
 
@@ -33,7 +33,7 @@ public abstract class Jogo {
 		this.maiorPontuacao = 0;
 		this.quantidadeVezesJogado = 0;
 		this.quantidadeVezesZerado = 0;
-		this.estilosJogo = new ArrayList<EstiloJogo>();
+		this.estilosJogo = new ArrayList<EstiloJogoEnum>();
 	}
 
 	public int getMaiorPontuacao() {
@@ -68,7 +68,7 @@ public abstract class Jogo {
 		return preco;
 	}
 
-	public List<EstiloJogo> getEstilosJogo() {
+	public List<EstiloJogoEnum> getEstilosJogo() {
 		return estilosJogo;
 	}
 
@@ -78,7 +78,7 @@ public abstract class Jogo {
 	 * @param estiloJogo
 	 * @return booleano informando se a operação teve êxito ou não
 	 */
-	public boolean adicionaEstiloJogo(EstiloJogo estiloJogo) {
+	public boolean adicionaEstiloJogo(EstiloJogoEnum estiloJogo) {
 		boolean retorno = false;
 
 		if (!estilosJogo.contains(estiloJogo)) {

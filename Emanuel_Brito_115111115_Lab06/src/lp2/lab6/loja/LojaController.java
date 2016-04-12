@@ -8,7 +8,7 @@ import lp2.exceptions.ErrosLogicaException;
 import lp2.exceptions.UpgradeIndisponivelException;
 import lp2.exceptions.UsuarioNaoCadastradoException;
 import lp2.exceptions.UsuarioX2PInsuficienteException;
-import lp2.lab6.jogo.EstiloJogo;
+import lp2.lab6.jogo.EstiloJogoEnum;
 import lp2.lab6.jogo.FactoryDeJogos;
 import lp2.lab6.jogo.Jogo;
 import lp2.lab6.usuario.FactoryDeUsuarios;
@@ -16,7 +16,7 @@ import lp2.lab6.usuario.Noob;
 import lp2.lab6.usuario.Usuario;
 import lp2.lab6.usuario.Veterano;
 
-public class LojaController {
+public class LojaController implements LojaInterface {
 
 	private List<Usuario> listaUsuarios;
 
@@ -28,11 +28,12 @@ public class LojaController {
 		return listaUsuarios;
 	}
 
-	private Usuario criaUsuario(String nomeUsuario, String loginUsuario, String tipoUsuario)
-			throws DadosInvalidosException {
+	private Usuario criaUsuario(String nomeUsuario, String loginUsuario,
+			String tipoUsuario) throws DadosInvalidosException {
 		FactoryDeUsuarios factoryDeUsuarios = new FactoryDeUsuarios();
 
-		return factoryDeUsuarios.criaUsuario(nomeUsuario, loginUsuario, tipoUsuario);
+		return factoryDeUsuarios.criaUsuario(nomeUsuario, loginUsuario,
+				tipoUsuario);
 	}
 
 	/**
@@ -42,8 +43,9 @@ public class LojaController {
 	 * @return void
 	 * @throws DadosInvalidosException
 	 */
-	public void adicionaUsuario(String nomeUsuario, String loginUsuario, String tipoUsuario)
-			throws DadosInvalidosException {
+	@Override
+	public void adicionaUsuario(String nomeUsuario, String loginUsuario,
+			String tipoUsuario) throws DadosInvalidosException {
 		listaUsuarios.add(criaUsuario(nomeUsuario, loginUsuario, tipoUsuario));
 	}
 
@@ -82,7 +84,9 @@ public class LojaController {
 	 * @throws FachadaException
 	 *             Caso usuário não esteja cadastrado na loja
 	 */
-	public boolean adicionaDinheiroUsuario(String login, double dinheiro) throws ErrosLogicaException {
+	@Override
+	public boolean adicionaDinheiroUsuario(String login, double dinheiro)
+			throws ErrosLogicaException {
 		boolean retorno = false;
 
 		int index = buscaIndexUsuario(login);
@@ -96,12 +100,13 @@ public class LojaController {
 		return retorno;
 	}
 
-	private Jogo criaJogo(String nomeJogo, double precoJogo, String tipoJogo, List<EstiloJogo> estilosJogo)
-			throws DadosInvalidosException {
+	private Jogo criaJogo(String nomeJogo, double precoJogo, String tipoJogo,
+			List<EstiloJogoEnum> estilosJogo) throws DadosInvalidosException {
 
 		FactoryDeJogos factoryDeJogos = new FactoryDeJogos();
 
-		return factoryDeJogos.criaJogo(nomeJogo, precoJogo, tipoJogo, estilosJogo);
+		return factoryDeJogos.criaJogo(nomeJogo, precoJogo, tipoJogo,
+				estilosJogo);
 
 	}
 
@@ -119,15 +124,18 @@ public class LojaController {
 	 *             Caso usuário não possua dinheiro suficiente para comprar o
 	 *             jogo
 	 */
-	public boolean vendeJogoUsuario(String loginUsuario, String nomeJogo, double precoJogo, String tipoJogo,
-			List<EstiloJogo> estilosJogo) throws ErrosLogicaException {
+	@Override
+	public boolean vendeJogoUsuario(String loginUsuario, String nomeJogo,
+			double precoJogo, String tipoJogo, List<EstiloJogoEnum> estilosJogo)
+			throws ErrosLogicaException {
 		boolean retorno = false;
 
 		int index = buscaIndexUsuario(loginUsuario);
 
 		if (index != -1) {
 			try {
-				retorno = listaUsuarios.get(index).compraJogo(criaJogo(nomeJogo, precoJogo, tipoJogo, estilosJogo));
+				retorno = listaUsuarios.get(index).compraJogo(
+						criaJogo(nomeJogo, precoJogo, tipoJogo, estilosJogo));
 			} catch (ErrosLogicaException ele) {
 				System.err.println(ele.getMessage());
 			} catch (DadosInvalidosException die) {
@@ -147,6 +155,7 @@ public class LojaController {
 	 *            o campo identificador de um Usuário
 	 * @return todas as informações a respeito do Usuário
 	 */
+	@Override
 	public String informacaoUsuario(String login) {
 		String retorno = "=== Central P2-CG ===\n\n";
 
@@ -195,6 +204,7 @@ public class LojaController {
 	 * @throws ErrosLogicaException
 	 *             Caso o nome ou login forem inválidos
 	 */
+	@Override
 	public boolean upgrade(String login) throws Exception {
 		boolean retorno = false;
 
@@ -203,7 +213,8 @@ public class LojaController {
 		if (index != -1) {
 			if (listaUsuarios.get(index) instanceof Noob) {
 				if (listaUsuarios.get(index).getPontuacao().getPontos() >= 1000) {
-					Veterano usuarioVeterano = noobParaVeterano(listaUsuarios.get(index));
+					Veterano usuarioVeterano = noobParaVeterano(listaUsuarios
+							.get(index));
 					listaUsuarios.remove(index);
 					listaUsuarios.add(index, usuarioVeterano);
 					retorno = true;

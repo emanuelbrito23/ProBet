@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import lp2.exceptions.DadosInvalidosException;
 import lp2.exceptions.ErrosLogicaException;
-import lp2.lab6.jogo.EstiloJogo;
+import lp2.lab6.jogo.EstiloJogoEnum;
 import lp2.lab6.jogo.Luta;
 import lp2.lab6.jogo.RPG;
 import lp2.lab6.loja.LojaController;
@@ -74,7 +74,7 @@ public class FachadaTest {
 
 			RPG game1 = new RPG("Paper Mario", 75.0);
 
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			assertEquals(true, loja.vendeJogoUsuario("emanuel.brito", game1));
 			assertEquals(true, loja.vendeJogoUsuario("anonymous.silva", game1));
@@ -103,7 +103,7 @@ public class FachadaTest {
 			assertEquals(true, loja.adicionaDinheiroUsuario("emanuel.brito", 100));
 
 			RPG game1 = new RPG("Paper Mario", 75.0);
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			assertEquals(true, loja.vendeJogoUsuario("emanuel.brito", game1));
 
@@ -115,8 +115,8 @@ public class FachadaTest {
 			}
 
 			Luta game3 = new Luta("Guilty Gears", 80.0);
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.MULTIPLAYER));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.MULTIPLAYER));
 
 			try {
 				assertEquals(false, loja.vendeJogoUsuario("emanuel.brito", game3));
@@ -149,11 +149,11 @@ public class FachadaTest {
 			assertEquals(true, loja.adicionaDinheiroUsuario("anonymous.silva", 200));
 
 			RPG game1 = new RPG("Paper Mario", 75.0);
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			Luta game3 = new Luta("Guilty Gears", 80.0);
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.MULTIPLAYER));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.MULTIPLAYER));
 
 			assertEquals(true, loja.vendeJogoUsuario("emanuel.brito", game1));
 
@@ -185,11 +185,11 @@ public class FachadaTest {
 			assertEquals(true, loja.adicionaDinheiroUsuario("emanuel.brito", 200));
 
 			RPG game1 = new RPG("Paper Mario", 75.0);
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			Luta game3 = new Luta("Guilty Gears", 80.0);
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.MULTIPLAYER));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.MULTIPLAYER));
 
 			assertEquals(true, loja.vendeJogoUsuario("emanuel.brito", game1));
 			assertEquals(true, loja.vendeJogoUsuario("emanuel.brito", game3));
@@ -239,7 +239,7 @@ public class FachadaTest {
 			assertEquals(true, loja.adicionaDinheiroUsuario("emanuel.brito", 200));
 
 			RPG game1 = new RPG("Paper Mario", 75.0);
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			assertEquals(true, loja.vendeJogoUsuario("emanuel.brito", game1));
 

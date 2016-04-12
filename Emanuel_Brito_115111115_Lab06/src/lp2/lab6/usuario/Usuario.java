@@ -100,7 +100,7 @@ public abstract class Usuario {
 	 * @return índice onde está localizado o jogo na lista. Retorna -1 caso o
 	 *         jogo não exista na lista
 	 */
-	private int buscaJogo(String nomeJogo) {
+	public int buscaJogo(String nomeJogo) {
 		int retorno = -1;
 
 		for (int i = 0; i < listaJogos.size(); i++) {
@@ -113,26 +113,9 @@ public abstract class Usuario {
 		return retorno;
 	}
 
-	/**
-	 * Registra uma jogada no jogo informando quantos pontos fez e se zerou o
-	 * jogo ou não e adiciona na conta do usuário os X2P que foram obtidos pela
-	 * jogada
-	 * 
-	 * @param nomeJogo
-	 *            o nome do jogo que foi jogado
-	 * @param score
-	 *            a pontuação obtida na jogada
-	 * @param zerou
-	 *            <i>true</i> para Jogo zerado e <i>false</i> para Jogo não
-	 *            zerado
-	 */
-	public void registraJogada(String nomeJogo, int score, boolean zerou) {
-		int index = buscaJogo(nomeJogo);
+	public abstract void recompensar(String nomeJogo, int score, boolean zerou);
 
-		if (index != -1) {
-			pontuacao.adicionaPontos(listaJogos.get(index).registraJogada(score, zerou));
-		}
-	}
+	public abstract void punir(String nomeJogo, int scoreObtido, boolean zerou);
 
 	/**
 	 * Compra o jogo caso tenha dinheiro suficiente e adiciona na lista de jogos
@@ -149,7 +132,8 @@ public abstract class Usuario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((getLogin() == null) ? 0 : getLogin().hashCode());
+		result = prime * result
+				+ ((getLogin() == null) ? 0 : getLogin().hashCode());
 		return result;
 	}
 }

@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import lp2.exceptions.DadosInvalidosException;
-import lp2.lab6.jogo.EstiloJogo;
+import lp2.lab6.jogo.EstiloJogoEnum;
 import lp2.lab6.jogo.Luta;
 import lp2.lab6.jogo.Plataforma;
 import lp2.lab6.jogo.RPG;
@@ -18,17 +18,17 @@ public class JogoTest {
 		try {
 			RPG game1 = new RPG("Paper Mario", 75.0);
 
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			Plataforma game2 = new Plataforma("Super Mario World", 30.0);
 
-			assertEquals(true, game2.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
-			assertEquals(true, game2.adicionaEstiloJogo(EstiloJogo.MULTIPLAYER));
+			assertEquals(true, game2.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
+			assertEquals(true, game2.adicionaEstiloJogo(EstiloJogoEnum.MULTIPLAYER));
 
 			Luta game3 = new Luta("Guilty Gears", 80.0);
 
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
-			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogo.MULTIPLAYER));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
+			assertEquals(true, game3.adicionaEstiloJogo(EstiloJogoEnum.MULTIPLAYER));
 
 			assertEquals(10, game1.registraJogada(5000, true));
 
@@ -37,7 +37,7 @@ public class JogoTest {
 			assertEquals(5, game3.registraJogada(5000, true));
 
 			RPG copiaGame1 = new RPG("Paper Mario", 75.0);
-			assertEquals(true, copiaGame1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, copiaGame1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			assertEquals(true, game1.equals(copiaGame1));
 			assertEquals(false, game1.equals(game2));
@@ -72,8 +72,8 @@ public class JogoTest {
 		try {
 			RPG game1 = new RPG("Paper Mario", 75.0);
 
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
-			assertEquals(false, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
+			assertEquals(false, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 		} catch (DadosInvalidosException je) {
 			fail();

@@ -6,7 +6,7 @@ import lp2.exceptions.DadosInvalidosException;
 
 public class FactoryDeJogos {
 
-	public Jogo criaJogo(String nomeJogo, double precoJogo, String tipoJogo, List<EstiloJogo> estilosJogo)
+	public Jogo criaJogo(String nomeJogo, double precoJogo, String tipoJogo, List<EstiloJogoEnum> estilosJogo)
 			throws DadosInvalidosException {
 		Jogo retorno = null;
 

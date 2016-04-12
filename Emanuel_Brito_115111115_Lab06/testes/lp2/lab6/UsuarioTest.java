@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import lp2.exceptions.DadosInvalidosException;
 import lp2.exceptions.ErrosLogicaException;
-import lp2.lab6.jogo.EstiloJogo;
+import lp2.lab6.jogo.EstiloJogoEnum;
 import lp2.lab6.jogo.Jogo;
 import lp2.lab6.jogo.RPG;
 import lp2.lab6.usuario.Noob;
@@ -30,7 +30,7 @@ public class UsuarioTest {
 
 			RPG game1 = new RPG("Paper Mario", 75.0);
 
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			assertEquals(true, usuario1.compraJogo(game1));
 			assertEquals(true, usuario2.compraJogo(game1));
@@ -89,7 +89,7 @@ public class UsuarioTest {
 			assertEquals(true, usuario2.adicionaDinheiro(60));
 
 			RPG game1 = new RPG("Paper Mario", 75.0);
-			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogo.COMPETITIVO));
+			assertEquals(true, game1.adicionaEstiloJogo(EstiloJogoEnum.COMPETITIVO));
 
 			try {
 				assertEquals(false, usuario1.compraJogo(game1));

@@ -21,4 +21,8 @@ public class X2P {
 	public void adicionaPontos(int pontos) {
 		this.pontos += pontos;
 	}
+
+	public void removePontos(int pontos) {
+		this.pontos -= pontos;
+	}
 }
