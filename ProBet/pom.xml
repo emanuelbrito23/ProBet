@@ -10,11 +10,16 @@
 	    <artifactId>httpclient</artifactId>
 	    <version>4.5.2</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.google.code.scriptengines/scriptengines-javascript -->
+	<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 	<dependency>
-	    <groupId>com.google.code.scriptengines</groupId>
-	    <artifactId>scriptengines-javascript</artifactId>
-	    <version>1.1.1</version>
+	    <groupId>org.jsoup</groupId>
+	    <artifactId>jsoup</artifactId>
+	    <version>1.9.2</version>
+	</dependency>
+	<dependency>
+	  <groupId>net.sourceforge.htmlunit</groupId>
+	  <artifactId>htmlunit</artifactId>
+	  <version>2.23</version>
 	</dependency>
   </dependencies>
   <build>

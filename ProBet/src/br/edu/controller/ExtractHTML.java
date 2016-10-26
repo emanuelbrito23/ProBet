@@ -90,48 +90,4 @@ public class ExtractHTML {
 		
 		return sb.toString();
 	}
-
-	public static String getDateLine(String line) {
-		String textCompare = "data-format='dd/mm/yy'>";
-
-		int beginText = (line.length() - 1) - textCompare.length();
-		for (int endText = (line.length() - 1); endText >= (textCompare.length() - 1); endText--) {
-			if (line.substring(beginText, endText).equals(textCompare)) {
-				return line.substring(endText, endText + 8);
-			}
-			beginText--;
-		}
-
-		return null;
-	}
-
-	public static String getCompetition(String line) {
-		String textCompare = "title=\"";
-
-		int beginText = (line.length() - 1) - textCompare.length();
-		for (int endText = (line.length() - 1); endText >= (textCompare.length() - 1); endText--) {
-			if (line.substring(beginText, endText).equals(textCompare)) {
-				String[] resultSplit = line.substring(endText, (line.length() - 1)).split("\"");
-				return resultSplit[0];
-			}
-			beginText--;
-		}
-
-		return null;
-	}
-
-	public static String getTeam(String line) {
-		String textCompare = "title=\"";
-
-		int beginText = (line.length() - 1) - textCompare.length();
-		for (int endText = (line.length() - 1); endText >= (textCompare.length() - 1); endText--) {
-			if (line.substring(beginText, endText).equals(textCompare)) {
-				String[] resultSplit = line.substring(endText, (line.length() - 1)).split("\"");
-				return resultSplit[0];
-			}
-			beginText--;
-		}
-
-		return null;
-	}
 }
